@@ -2,27 +2,38 @@ import React from 'react';
 
 import { Image, ScrollView, StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
 import * as Yup from 'yup';
+import Icon from '../components/Icon';
 
 import Screen from '../components/Screen';
+import colors from '../config/colors';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
+    employID: Yup.string().required().min(4).label("Employ ID"),
 });
 
 
-function LoginScreen({ navigation }) {
+function RegisterScreen({navigation}) {
 
     return (
         <Screen style={styles.container}>
             <ScrollView>
-                <Image
-                    style={styles.logo}
-                    source={require('../assets/logo.png')}
-                />
+                <View style={styles.logoContainer}>
+                    <Image  
+                        source={require('../assets/logoName.png')}
+                        style={styles.logoName}
+                    />
+                    <Icon 
+                        name='account-tie-outline' 
+                        backgroundColor={colors.bgColor}
+                        iconColor={colors.secondary}
+                        size={150}
+                    />
+                </View>
                 <AppForm
-                    initialValues={{email:'', password:''}}
+                    initialValues={{email:'', password:'', employID:''}}
                     onSubmit={values => console.log(values)}
                     validationSchema={validationSchema}
                 >
@@ -44,12 +55,16 @@ function LoginScreen({ navigation }) {
                         secureTextEntry={true} 
                         textContentType='password'
                     />
-                    <SubmitButton 
-                        title='Login'
+                    <AppFormField
+                        autoCapitalize='none' 
+                        autoCorrect={false}
+                        icon='card-account-details-outline'
+                        name='employID'
+                        placeholder='Employ ID'
+                        secureTextEntry={false} 
+                        textContentType='password'
                     />
-                    <TouchableWithoutFeedback onPress={()=> navigation.navigate('AttendanceScreen')}>
-                        <Text>By Pass</Text>
-                    </TouchableWithoutFeedback>
+                    <SubmitButton title='Register'/>
                 </AppForm>
             </ScrollView>
         </Screen>
@@ -59,13 +74,18 @@ function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
     container:{
         paddingHorizontal: 20,
+        backgroundColor: colors.bgColor,
     },
-    logo:{
-        width: 155,
+    logoContainer:{
+        width: '100%',
         height: 250,
+        alignItems: 'center',
         alignSelf: 'center',
-        marginTop: 30,
         marginBottom: 20,
     },
+    logoName:{
+        width: '100%',
+        height: 120,
+    },
 })
-export default LoginScreen; 
+export default RegisterScreen; 

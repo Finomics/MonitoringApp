@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MonitoringApp",
+    "name": "Monitoring App",
     "slug": "MonitoringApp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -29,6 +29,6 @@
     "web": {
       "favicon": "./app/assets/icon.png"
     },
-    "description": "Maintaining Time Management"
+    "description": ""
   }
 }

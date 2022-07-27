@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, ScrollView } from 'react-native';
 import AppButton from '../components/AppButton';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
@@ -15,19 +15,28 @@ function WelcomeScreen({navigation}) {
                 />
             </View>
             <View style={styles.buttonContainer}>
+            <ScrollView style={{width: '100%'}}>
                 <AppButton 
-                    title='Login' 
+                    title='Mark Attendance' 
                     // onPress={()=> {console.log('Login Button Pressed')}}
-                    onPress={()=> navigation.navigate('LoginScreen')}
+                    onPress={()=> navigation.navigate('AttendanceScreen')}
                     color= 'primary'
                 />
             <AppButton 
-                title='Register'
+                title='Register Yourself'
                 // onPress={()=> {console.log('Register Button Pressed')}}
                 onPress={()=> navigation.navigate('RegisterScreen')}
                 color= 'secondary'
             />
+            <AppButton 
+                title='Input Location'
+                // onPress={()=> {console.log('Register Button Pressed')}}
+                onPress={()=> navigation.navigate('InputLocationScreen')}
+                color= 'dark'
+            />
+            </ScrollView>
             </View> 
+            
         </Screen>
     );
 }

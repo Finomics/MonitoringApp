@@ -3,6 +3,9 @@ import React from 'react';
 import Clock from 'react-live-clock';
 import { Image, ScrollView, StyleSheet, View, Text } from 'react-native';
 import * as Yup from 'yup';
+
+
+import AppButton from '../components/AppButton';
 import Icon from '../components/Icon';
 import PresentTime from '../components/PresentTime';
 
@@ -17,9 +20,9 @@ const validationSchema = Yup.object().shape({
 });
 
 
-function AttendanceScreen({navigation}) {
+function AttendanceScreen({route, navigation}) {
     
-
+    let mapInputLocation = route.params;
     return (
         <Screen style={styles.container}>
             <ScrollView>
@@ -27,7 +30,7 @@ function AttendanceScreen({navigation}) {
                     <Image  
                         source={require('../assets/logoName.png')}
                         style={styles.logoName}
-                    />
+                        />
                     <Icon 
                         name='account-tie-outline' 
                         backgroundColor={colors.bgColor}
@@ -36,8 +39,18 @@ function AttendanceScreen({navigation}) {
                     />
                 </View>
                 <Time/>
-                <PresentTime/>
 
+                <PresentTime 
+                    title1='Punch-In'
+                    title2='Punch-Out'
+                    mapInputLocation={mapInputLocation}
+                />
+                <AppButton 
+                    title='View Attendance'
+                    // onPress={()=> {console.log('Register Button Pressed')}}
+                    onPress={()=> navigation.navigate('AttendanceRecordScreen')}
+                    color= 'dark'
+                />
             </ScrollView>
         </Screen>
     );
@@ -45,7 +58,7 @@ function AttendanceScreen({navigation}) {
 
 const styles = StyleSheet.create({
     container:{
-        paddingHorizontal: 20,
+        
         backgroundColor: colors.bgColor,
     },
     logoContainer:{
@@ -54,6 +67,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         marginBottom: 20,
+        paddingHorizontal: 20,
     },
     logoName:{
         width: '100%',

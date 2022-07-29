@@ -8,21 +8,37 @@ import Screen from '../components/Screen';
 import Icon from '../components/Icon';
 import colors from '../config/colors';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
-
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label("Name"),
     password: Yup.string().required().min(4).label("Password"),
     id: Yup.string().required().min(4).label("Employ ID"),
-    number: Yup.string().required().min(4).label("Number"), 
+    number: Yup.string().required().min(4).label("Number"),
 })
 
 
 function AddEmployeeScreen(props) {
 
 
-    const handleSubmit=(values)=>{
+    const handleSubmit = (values) => {
         console.log(values)
+        axios({
+            method: "post",
+            url: "https://attendancepi.herokuapp.com/Empolyes",
+            data: {
+                EmpolyeCode: values.id,
+                EmpolyeName: values.name,
+                EmpolyeNumber: values.number,
+                EmpolyePassword: values.password,
+            }
+
+        }).then((res) => {
+            console.log(res.data, "error");
+            alert("Empolyee has been created!")
+        }).catch((err) => {
+            console.log(err, "error");
+        })
     }
 
 
@@ -30,7 +46,7 @@ function AddEmployeeScreen(props) {
         <Screen style={styles.container}>
             <ScrollView>
                 <View style={styles.header}>
-                    <Image  
+                    <Image
                         source={require('../assets/logoName.png')}
                         style={styles.logoName}
                     />
@@ -39,52 +55,52 @@ function AddEmployeeScreen(props) {
                         iconColor={colors.secondary}
                         backgroundColor='transparent'
                         size={150}
-                    />    
+                    />
                 </View>
                 <AppForm
-                    initialValues={{id:'', name:'', number:'', password:''}}
-                    onSubmit={(values)=>{handleSubmit(values)}}
+                    initialValues={{ id: '', name: '', number: '', password: '' }}
+                    onSubmit={(values) => { handleSubmit(values) }}
                     validationSchema={validationSchema}
                 >
                     <AppFormField
-                        autoCapitalize='words' 
+                        autoCapitalize='words'
                         autoCorrect={false}
                         icon='account-arrow-right-outline'
                         keyboardType='email-address'
                         name='name'
                         placeholder='Name'
-                        textContentType='name' 
+                        textContentType='name'
                     />
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='card-account-details-outline'
-                        keyboardType= 'default'
+                        keyboardType='default'
                         name='id'
                         placeholder='Employee ID'
                         secureTextEntry={false}
-                        textContentType='password' 
+                        textContentType='password'
                     />
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='phone-plus-outline'
-                        keyboardType= 'numeric'
+                        keyboardType='numeric'
                         name='number'
                         placeholder='Number'
-                        textContentType='telephoneNumber' 
+                        textContentType='telephoneNumber'
                     />
                     <AppFormField
-                        autoCapitalize='none' 
+                        autoCapitalize='none'
                         autoCorrect={false}
                         icon='lock-outline'
                         keyboardType='default'
                         name='password'
                         placeholder='Password'
                         secureTextEntry={true}
-                        textContentType='password' 
+                        textContentType='password'
                     />
-                    <SubmitButton title='Add Employee'/>
+                    <SubmitButton title='Add Employee' />
                 </AppForm>
             </ScrollView>
         </Screen>
@@ -92,14 +108,14 @@ function AddEmployeeScreen(props) {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         paddingHorizontal: 20,
         backgroundColor: colors.bgColor,
     },
-    header:{
+    header: {
         alignItems: 'center',
     },
-    logoName:{
+    logoName: {
         width: '100%',
         height: 110,
         marginBottom: -50,

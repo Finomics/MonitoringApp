@@ -7,10 +7,11 @@ import Screen from '../components/Screen';
 import colors from '../config/colors';
 import Icon from '../components/Icon';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
     latitude: Yup.string().required().label("Latitude"),
-    longitude: Yup.string().required().label("Longitude"), 
+    longitude: Yup.string().required().label("Longitude"),
     name: Yup.string().required().label("Name")
 })
 
@@ -18,15 +19,31 @@ const validationSchema = Yup.object().shape({
 function FrequentLocation(props) {
 
 
-    const handleSubmit=(values)=>{
-        console.log(values)
+    const handleSubmit = (values) => {
+        console.log(values, "values")
+        axios({
+            method: "post",
+            url: "https://attendancepi.herokuapp.com/Location",
+            data: {
+                LocationName: values.name,
+                LocationLatitude: values.latitude,
+                LocationLongitude: values.longitude,
+            }
+
+        }).then((res) => {
+            console.log(res.data, "Res FrequentLocation Json Data");
+            alert("Locatin has been Submited!")
+        }).catch((err) => {
+            console.log(err, "error");
+        })
+
     }
 
     return (
         <Screen style={styles.container}>
             <ScrollView>
                 <View style={styles.header}>
-                    <Image  
+                    <Image
                         source={require('../assets/logoName.png')}
                         style={styles.logoName}
                     />
@@ -35,41 +52,41 @@ function FrequentLocation(props) {
                         iconColor={colors.secondary}
                         backgroundColor='transparent'
                         size={150}
-                    />    
+                    />
                 </View>
                 <AppForm
-                    initialValues={{latitude:'', longitude:'', name:''}}
-                    onSubmit={(values)=>{handleSubmit(values)}}
+                    initialValues={{ latitude: '', longitude: '', name: '' }}
+                    onSubmit={(values) => { handleSubmit(values) }}
                     validationSchema={validationSchema}
                 >
                     <AppFormField
-                        autoCapitalize='words' 
+                        autoCapitalize='words'
                         autoCorrect={false}
                         icon='latitude'
                         keyboardType='numeric'
                         name='latitude'
                         placeholder='Latitude'
-                        textContentType='name' 
+                        textContentType='name'
                     />
                     <AppFormField
-                        autoCapitalize='words' 
+                        autoCapitalize='words'
                         autoCorrect={false}
                         icon='longitude'
                         keyboardType='numeric'
                         name='longitude'
                         placeholder='Longitude'
-                        textContentType='name' 
+                        textContentType='name'
                     />
                     <AppFormField
-                        autoCapitalize='words' 
+                        autoCapitalize='words'
                         autoCorrect={false}
                         icon='map-marker-account-outline'
                         keyboardType='email-address'
                         name='name'
                         placeholder='Location Name'
-                        textContentType='name' 
+                        textContentType='name'
                     />
-                    <SubmitButton title='Add Frequent Location'/>
+                    <SubmitButton title='Add Frequent Location' />
                 </AppForm>
             </ScrollView>
         </Screen>
@@ -77,14 +94,14 @@ function FrequentLocation(props) {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         paddingHorizontal: 20,
         backgroundColor: colors.bgColor,
     },
-    header:{
+    header: {
         alignItems: 'center',
     },
-    logoName:{
+    logoName: {
         width: '100%',
         height: 110,
         marginBottom: -50,

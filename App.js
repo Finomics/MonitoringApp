@@ -22,8 +22,8 @@ export default function App() {
     // <AttendanceScreen/>
     // <InputLocationScreen/>
     // <LiveLocationTracking/>
-    // <AddEmployeeScreen/>
-    <FrequentLocation/>
+    <AddEmployeeScreen/>
+    // <FrequentLocation/>
   );
 }
 

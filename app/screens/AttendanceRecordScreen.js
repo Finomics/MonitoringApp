@@ -35,12 +35,14 @@ function AttendanceRecordScreen(props) {
             const highscore  =  snapshot.val();
             const array = Object.values(highscore);
             setEmployeData(array);
-            console.log(employeData)
+            console.log(employeData,"empolyeeeeeqqqq")
         });
     },[])
 
 
     const [data, setData] = useState(attendanceData)
+
+    console.log(data,"datt");
 
     return (
         <Screen>
@@ -69,10 +71,12 @@ function AttendanceRecordScreen(props) {
                         // keyExtractor={attendanceData => attendanceData.id.toString()}
                         // keyExtractor={data => data.id}
                         renderItem= {({item}) =>
+                        
                             <AttendanceList
                                 date={item.day}
                                 punchIn={item.punchIn}
                                 punchOut={item.punchOut}
+                                
                             />
                     }/>
                 </View>

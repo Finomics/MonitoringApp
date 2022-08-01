@@ -19,10 +19,10 @@ export default function App() {
 
     // <AttendanceRecordScreen/>
     // <WelcomeScreen/>
-    <RegisterScreen />
+    // <RegisterScreen />
     // <RegisterScrAttendanceScreeneen />
     // <AttendanceScreen />
-    // <InputLocationScreen/>
+    <InputLocationScreen/>
     // <LiveLocationTracking/>
     // <AddEmployeeScreen/>
     // <FrequentLocation/>

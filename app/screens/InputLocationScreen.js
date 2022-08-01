@@ -33,7 +33,7 @@ let mapInputLocation = [
 function InputLocationScreen({ navigation }) {
   // let temp = [24.8620336, 67.0790393]
 
-  let [temp, setTemp] = useState([24.8620336, 67.0790393]);
+  let [temp, setTemp] = useState({latitude: 24.8620336, longitude: 67.0790393});
 
   const [timePicker, setTimePicker] = useState(false);
   const [time, setTime] = useState(new Date(Date.now()));
@@ -43,10 +43,10 @@ function InputLocationScreen({ navigation }) {
   const [value, setValue] = useState(null);
 
   const [items, setItems] = useState([
-    { label: "Home", value: [24.8620336, 67.0790393] },
-    { label: "Hill Park", value: [24.87149, 67.070936] },
-    { label: "Ideal Bakery", value: [24.8596269, 67.0819221] },
-    { label: "VIP Flag", value: [24.8543405, 67.0089619] },
+    { label: "Home", value: {latitude: 24.8620336, longitude: 67.0790393} },
+    { label: "Hill Park", value: {latitude: 24.87149, longitude: 67.070936} },
+    { label: "Ideal Bakery", value: {latitude: 24.8596269, longitude: 67.0819221} },
+    { label: "VIP Flag", value: {latitude: 24.8543405, longitude: 67.0089619} },
   ]);
 
   useEffect(() => {
@@ -67,7 +67,8 @@ function InputLocationScreen({ navigation }) {
       });
   }, []);
 
-  console.log("outside the func", value);
+
+  console.log("outside the func", items);
 
   // console.log(selectedValue, "lll");
 
@@ -77,7 +78,7 @@ function InputLocationScreen({ navigation }) {
   };
 
   const handleValue = () => {
-    console.log(value[0], "single value");
+    console.log(value, "single value");
     console.log(value, "Drop");
     setTemp(value);
   };
@@ -94,7 +95,7 @@ function InputLocationScreen({ navigation }) {
   const handlePress = () => {
     Alert.alert(
       "Prescribed Requirement",
-      "Punch time will be " + time + " at " + temp[0] + ", " + temp[1],
+      "Punch time will be " + time + " at " + temp.latitude + ", " + temp.longitude,
       [
         {
           text: "Cancel",
@@ -149,15 +150,15 @@ function InputLocationScreen({ navigation }) {
         <MapView
           style={styles.map}
           initialRegion={{
-            latitude: temp[0],
-            longitude: temp[1],
+            latitude: temp.latitude,
+            longitude: temp.longitude,
             latitudeDelta: 1 / 5,
             longitudeDelta: 1 / 5,
           }}
           showsCompass={true}
         >
           <Marker
-            coordinate={{ latitude: temp[0], longitude: temp[1] }}
+            coordinate={{ latitude: temp.latitude, longitude: temp.longitude }}
             draggable={true}
             // onDragEnd={(e) => {mapInputLocation=e.nativeEvent.coordinate}}
             onDragEnd={(e) => {

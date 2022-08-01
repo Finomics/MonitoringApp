@@ -10,6 +10,7 @@ import AddEmployeeScreen from "./app/screens/AddEmployeeScreen";
 import FrequentLocation from "./app/screens/FrequentLocation";
 import AttendanceScreen from "./app/screens/AttendanceScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
+import DropDownBox from "./app/components/DropDownBox";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
     // <RegisterScrAttendanceScreeneen />
     // <AttendanceScreen />
     <InputLocationScreen/>
+    // <DropDownBox/>
     // <LiveLocationTracking/>
     // <AddEmployeeScreen/>
     // <FrequentLocation/>

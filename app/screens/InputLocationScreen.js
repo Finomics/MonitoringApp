@@ -4,10 +4,7 @@ import {
   StyleSheet,
   Image,
   View,
-  Dimensions,
-  Button,
   Text,
-  ScrollView,
   Alert,
 } from "react-native";
 // import TimePicker from 'react-native-simple-time-picker';
@@ -68,7 +65,7 @@ function InputLocationScreen({ navigation }) {
   }, []);
 
 
-  console.log("outside the func", items);
+  // console.log("outside the func", items);
 
   // console.log(selectedValue, "lll");
 
@@ -78,10 +75,14 @@ function InputLocationScreen({ navigation }) {
   };
 
   const handleValue = () => {
-    console.log(value, "single value");
-    console.log(value, "Drop");
+    // console.log(value, "single value");
+    // console.log(value, "Drop");
     setTemp(value);
   };
+
+  const handleItem = (item) => {
+    console.log("Whole Object", item)
+  }
 
   function showTimePicker() {
     setTimePicker(true);
@@ -213,6 +214,8 @@ function InputLocationScreen({ navigation }) {
           onChangeValue={() => {
             handleValue();
           }}
+          // onSelectItem={item => console.log('Hello',item)} 
+          onSelectItem={item => handleItem(item)} 
           style={styles.dropBox}
         />
 

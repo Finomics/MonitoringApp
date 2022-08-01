@@ -25,7 +25,8 @@ export default function DropDownBox() {
         ]}
           setOpen={setOpen}
           setValue={setValue}
-          onChangeValue={()=> {handlePress(value)}}
+          onChangeValue={item => {handlePress(item)}}
+          onSelectItem={item => console.log(item)}
       />
     </View>
   );

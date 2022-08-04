@@ -3,8 +3,9 @@ import { TouchableOpacity, View } from 'react-native';
 
 
 import { MaterialCommunityIcons } from '@expo/vector-icons' 
+import AppText from './AppText';
 
-function Icon({name, size=40, backgroundColor='#000', iconColor='#fff', onPress}) {
+function Icon({name, size=40, backgroundColor='transparent', iconColor='#fff', onPress, title}) {
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={{
@@ -17,6 +18,7 @@ function Icon({name, size=40, backgroundColor='#000', iconColor='#fff', onPress}
 
             }}>
                 <MaterialCommunityIcons name={name} color={iconColor} size={size*0.75} />
+                {title && <AppText>{title}</AppText>}
             </View>
         </TouchableOpacity>
     );

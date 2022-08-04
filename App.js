@@ -12,13 +12,18 @@ import AttendanceScreen from "./app/screens/AttendanceScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import DropDownBox from "./app/components/DropDownBox";
 import LoginScreen from "./app/screens/LoginScreen";
+import Icon from "./app/components/Icon";
+import AdminHomeScreen from "./app/screens/AdminHomeScreen";
+import EmployeeHomeScreen from "./app/screens/EmployeeHomeScreen";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthNavigator/>
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <AuthNavigator/>
+    // </NavigationContainer>
 
+    <EmployeeHomeScreen/>
+    // <AdminHomeScreen/>
     // <AttendanceRecordScreen/>
     // <WelcomeScreen/>
     // <RegisterScreen />

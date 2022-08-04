@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
     employID: Yup.string().required().min(4).label("Employ ID"),
 });
 
-function LoginScreen(props) {
+function LoginScreen({navigation}) {
    
     const handleSubmit=(values)=>{
         console.log(values)

@@ -5,7 +5,7 @@ import Screen from '../components/Screen';
 import Icon from '../components/Icon';
 import colors from '../config/colors';
 
-function AdminHomeScreen({navigation}) {
+function EmployeeHomeScreen({navigation}) {
     return (
         <Screen>
             
@@ -24,8 +24,8 @@ function AdminHomeScreen({navigation}) {
                             // backgroundColor={colors.backGround}
                             iconColor={colors.primary}
                             size={150}
-                            title='Add Employee'
-                             onPress={()=> navigation.navigate('AddEmployeeScreen')}
+                            title='Empty'
+                             onPress={()=> console.log('Empty')}
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
@@ -34,7 +34,7 @@ function AdminHomeScreen({navigation}) {
                             // backgroundColor={colors.backGround}
                             iconColor={colors.primary}
                             size={150}
-                            title='Target Location'
+                            title='Target Destination'
                             onPress={()=> navigation.navigate('InputLocationScreen')}
                         />
                     </View>
@@ -57,7 +57,7 @@ function AdminHomeScreen({navigation}) {
                             iconColor={colors.primary}
                             size={150}
                             title='Record'
-                            onPress={()=> navigation.navigate('AttendanceRecordScreen')}
+                            onPress={()=> navigation.navigate('AttendanceScreen')}
                         />
                     </View>
                 </View>
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default AdminHomeScreen;
+export default EmployeeHomeScreen;

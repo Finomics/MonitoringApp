@@ -15,7 +15,7 @@ function WelcomeScreen({navigation}) {
                 />
             </View>
             <View style={styles.buttonContainer}>
-            <ScrollView style={{width: '100%'}}>
+            {/* <ScrollView style={{width: '100%'}}> */}
                 <AppButton 
                     title='Mark Attendance' 
                     // onPress={()=> {console.log('Login Button Pressed')}}
@@ -28,13 +28,13 @@ function WelcomeScreen({navigation}) {
                 onPress={()=> navigation.navigate('RegisterScreen')}
                 color= 'secondary'
             />
-            <AppButton 
+            {/* <AppButton 
                 title='Input Location'
                 // onPress={()=> {console.log('Register Button Pressed')}}
                 onPress={()=> navigation.navigate('InputLocationScreen')}
                 color= 'dark'
-            />
-            </ScrollView>
+            /> */}
+            {/* </ScrollView> */}
             </View> 
             
         </Screen>

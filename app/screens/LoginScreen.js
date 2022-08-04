@@ -9,19 +9,16 @@ import colors from '../config/colors';
 import { AppForm, AppFormField, SubmitButton } from '../forms';
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
     employID: Yup.string().required().min(4).label("Employ ID"),
 });
 
-
-function RegisterScreen({navigation}) {
-
+function LoginScreen(props) {
+   
     const handleSubmit=(values)=>{
         console.log(values)
-        navigation.navigate('AttendanceScreen')
+        navigation.navigate('AdminHomeScreen')
     }
-
     return (
         <Screen style={styles.container}>
             <ScrollView>
@@ -38,18 +35,18 @@ function RegisterScreen({navigation}) {
                     />
                 </View>
                 <AppForm
-                    initialValues={{email:'', password:'', employID:''}}
+                    initialValues={{password:'', employID:''}}
                     onSubmit={values => handleSubmit(values)}
                     validationSchema={validationSchema}
                 >
                     <AppFormField
                         autoCapitalize='none' 
                         autoCorrect={false}
-                        icon='email'
-                        keyboardType='email-address'
-                        name='email'
-                        placeholder='Email'
-                        textContentType='emailAddress' 
+                        icon='card-account-details-outline'
+                        name='employID'
+                        placeholder='Employ ID'
+                        secureTextEntry={false} 
+                        textContentType='password'
                     />
                     <AppFormField
                         autoCapitalize='none' 
@@ -60,16 +57,7 @@ function RegisterScreen({navigation}) {
                         secureTextEntry={true} 
                         textContentType='password'
                     />
-                    <AppFormField
-                        autoCapitalize='none' 
-                        autoCorrect={false}
-                        icon='card-account-details-outline'
-                        name='employID'
-                        placeholder='Employ ID'
-                        secureTextEntry={false} 
-                        textContentType='password'
-                    />
-                    <SubmitButton title='Register'/>
+                    <SubmitButton title='Attendance'/>
                 </AppForm>
             </ScrollView>
         </Screen>
@@ -93,4 +81,5 @@ const styles = StyleSheet.create({
         height: 120,
     },
 })
-export default RegisterScreen; 
+
+export default LoginScreen;

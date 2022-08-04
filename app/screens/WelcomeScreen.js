@@ -19,7 +19,7 @@ function WelcomeScreen({navigation}) {
                 <AppButton 
                     title='Mark Attendance' 
                     // onPress={()=> {console.log('Login Button Pressed')}}
-                    onPress={()=> navigation.navigate('AttendanceScreen')}
+                    onPress={()=> navigation.navigate('LoginScreen')}
                     color= 'primary'
                 />
             <AppButton 

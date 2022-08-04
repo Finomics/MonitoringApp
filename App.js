@@ -11,19 +11,21 @@ import FrequentLocation from "./app/screens/FrequentLocation";
 import AttendanceScreen from "./app/screens/AttendanceScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import DropDownBox from "./app/components/DropDownBox";
+import LoginScreen from "./app/screens/LoginScreen";
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    //   <AuthNavigator/>
-    // </NavigationContainer>
+    <NavigationContainer>
+      <AuthNavigator/>
+    </NavigationContainer>
 
     // <AttendanceRecordScreen/>
     // <WelcomeScreen/>
     // <RegisterScreen />
     // <RegisterScrAttendanceScreeneen />
     // <AttendanceScreen />
-    <InputLocationScreen/>
+    // <InputLocationScreen/>
+    // <LoginScreen/>
     // <DropDownBox/>
     // <LiveLocationTracking/>
     // <AddEmployeeScreen/>

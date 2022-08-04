@@ -20,7 +20,7 @@ function EmployeeHomeScreen({navigation}) {
                 <View style={{width: '100%', height: '50%', flexDirection: 'row'}}>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='account-multiple-plus-outline' 
+                            name='blank' 
                             // backgroundColor={colors.backGround}
                             iconColor={colors.primary}
                             size={150}
@@ -30,34 +30,34 @@ function EmployeeHomeScreen({navigation}) {
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='map-marker-account-outline' 
+                            name='map-marker-radius-outline' 
                             // backgroundColor={colors.backGround}
                             iconColor={colors.primary}
                             size={150}
                             title='Target Destination'
-                            onPress={()=> navigation.navigate('InputLocationScreen')}
+                            onPress={()=> navigation.navigate('AttendanceScreen')}
                         />
                     </View>
                 </View>
                 <View style={{ width: '100%', height: '50%', flexDirection: 'row'}}>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='map-marker-plus-outline' 
+                            name='map-marker-check-outline' 
                             // backgroundColor={colors.secondary}
                             iconColor={colors.primary}
                             size={150}
-                            title='Comman Location'
-                             onPress={()=> navigation.navigate('FrequentLocation')}//shuldbe PaymentScreen
+                            title='Mark Attendance'
+                             onPress={()=> navigation.navigate('AttendanceScreen')}//shuldbe PaymentScreen
                         />
                     </View>
                     <View style={{ width: '50%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
                         <Icon 
-                            name='file-document-edit-outline' 
+                            name='file-document-outline' 
                             // backgroundColor={colors.secondary}
                             iconColor={colors.primary}
                             size={150}
                             title='Record'
-                            onPress={()=> navigation.navigate('AttendanceScreen')}
+                            onPress={()=> navigation.navigate('AttendanceRecordScreen')}
                         />
                     </View>
                 </View>

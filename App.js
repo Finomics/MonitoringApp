@@ -29,14 +29,14 @@ export default function App() {
     // <AdminHomeScreen/>
     // <AttendanceRecordScreen/>
     // <WelcomeScreen/>
-    <RegisterScreen />
+    // <RegisterScreen />
     // <RegisterScrAttendanceScreeneen />
     // <AttendanceScreen />
     // <InputLocationScreen/>
     // <LoginScreen/>
     // <DropDownBox/>
     // <LiveLocationTracking/>
-    // <AddEmployeeScreen/>
+    <AddEmployeeScreen/>
     // <FrequentLocation/>
 
     // <Testing/>

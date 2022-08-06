@@ -16,17 +16,20 @@ import Icon from "./app/components/Icon";
 import AdminHomeScreen from "./app/screens/AdminHomeScreen";
 import EmployeeHomeScreen from "./app/screens/EmployeeHomeScreen";
 
+// import Testing from "./app/components/Testing";
+
+
 export default function App() {
   return (
     // <NavigationContainer>
     //   <AuthNavigator/>
     // </NavigationContainer>
 
-    <EmployeeHomeScreen/>
+    // <EmployeeHomeScreen/>
     // <AdminHomeScreen/>
     // <AttendanceRecordScreen/>
     // <WelcomeScreen/>
-    // <RegisterScreen />
+    <RegisterScreen />
     // <RegisterScrAttendanceScreeneen />
     // <AttendanceScreen />
     // <InputLocationScreen/>
@@ -35,6 +38,9 @@ export default function App() {
     // <LiveLocationTracking/>
     // <AddEmployeeScreen/>
     // <FrequentLocation/>
+
+    // <Testing/>
+
   );
 }
 

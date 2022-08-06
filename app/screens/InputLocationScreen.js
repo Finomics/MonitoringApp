@@ -6,6 +6,7 @@ import {
   View,
   Text,
   Alert,
+  ScrollView,
 } from "react-native";
 // import TimePicker from 'react-native-simple-time-picker';
 
@@ -34,10 +35,13 @@ function InputLocationScreen({ navigation }) {
 
   const [timePicker, setTimePicker] = useState(false);
   const [time, setTime] = useState(new Date(Date.now()));
-  const [open, setOpen] = useState(false);
+  const [openItem, setOpenItem] = useState(false);
+  const [openList, setOpenList] = useState(false);
   const [locationData, setlocationData] = useState([]);
   const [selectedValue, setSelectedValue] = useState("Location Name");
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState('');
+
+  const [name, setName] = useState(null)
 
   const [items, setItems] = useState([
     { label: "Home", value: {latitude: 24.8620336, longitude: 67.0790393} },
@@ -45,6 +49,12 @@ function InputLocationScreen({ navigation }) {
     { label: "Ideal Bakery", value: {latitude: 24.8596269, longitude: 67.0819221} },
     { label: "VIP Flag", value: {latitude: 24.8543405, longitude: 67.0089619} },
   ]);
+
+  const [list, setList] = useState([
+    {label: 'Hassan', value: 'has'},
+    {label: 'Hammad', value: 'ham'},
+    {label: 'Anas', value: 'ana'},
+])
 
   useEffect(() => {
     fetchCoordinates();
@@ -74,14 +84,19 @@ function InputLocationScreen({ navigation }) {
     console.log("inside the func", value);
   };
 
-  const handleValue = () => {
-    // console.log(value, "single value");
-    // console.log(value, "Drop");
-    setTemp(value);
-  };
+  // const handleValue = () => {
+  //   // console.log(value, "single value");
+  //   // console.log(value, "Drop");
+  //   setTemp(value);
+  // };
 
-  const handleItem = (item) => {
+  const handleEmployee = (item) => {
     console.log("Whole Object", item)
+  }
+
+  const handleLocation = (item) => {
+    console.log("Whole Object", item)
+    setTemp(item.value)
   }
 
   function showTimePicker() {
@@ -168,6 +183,7 @@ function InputLocationScreen({ navigation }) {
           />
         </MapView>
       </View>
+
       {/* <ScrollView> */}
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <Text>Time = {time.toLocaleTimeString()}</Text>
@@ -181,41 +197,35 @@ function InputLocationScreen({ navigation }) {
           onChange={onTimeSelected}
         />
       )}
-      {!timePicker && (
-        <View style={{ marginTop: 0 }}>
-          <AppButton
-            title="Pick a Time"
-            onPress={showTimePicker}
-            color="secondary"
-          />
-        </View>
-      )}
+      <View style={{ marginTop: 0 }}>
+        <AppButton
+          title="Pick a Time"
+          onPress={showTimePicker}
+          color="secondary"
+        />
+      </View>
 
       <View style={styles.container}>
-        {/* <Picker
-          selectedValue={selectedValue}
-          style={styles.dropBox}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          {locationData.map((v, i) => {
-            return (
-              <Picker.Item key={i} label={v.LocationName} value={v} />
-            )
-          })}
-        </Picker> */}
 
         <DropDownPicker
-          open={open}
+          open={openItem}
           value={value}
           items={items}
-          setOpen={setOpen}
+          setOpen={setOpenItem}
           setValue={setValue}
           setItems={setItems}
-          onChangeValue={() => {
-            handleValue();
-          }}
-          // onSelectItem={item => console.log('Hello',item)} 
-          onSelectItem={item => handleItem(item)} 
+          onSelectItem={item => handleLocation(item)} 
+          style={styles.dropBox}
+        />
+
+        <DropDownPicker
+          open={openList}
+          value={name}
+          items={list}
+          setOpen={setOpenList}
+          setValue={setName}
+          setItems={setList}
+          onSelectItem={item => handleEmployee(item)} 
           style={styles.dropBox}
         />
 
@@ -250,13 +260,14 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   mapContainer: {
-    width: "90%",
-    height: 350,
+    width: "95%",
+    height: '50%',
     alignSelf: "center",
     borderWidth: 3,
     borderRadius: 15,
     overflow: "hidden",
     borderColor: colors.secondary,
+    marginTop: -25,
   },
 });
 

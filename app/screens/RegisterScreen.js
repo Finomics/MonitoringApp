@@ -43,6 +43,15 @@ function RegisterScreen({navigation}) {
                     validationSchema={validationSchema}
                 >
                     <AppFormField
+                        autoCapitalize='words' 
+                        autoCorrect={false}
+                        icon='card-account-details-outline'
+                        name='employID'
+                        placeholder='User Name'
+                        secureTextEntry={false} 
+                        textContentType='emailAddress'
+                    />
+                    <AppFormField
                         autoCapitalize='none' 
                         autoCorrect={false}
                         icon='email'
@@ -58,15 +67,6 @@ function RegisterScreen({navigation}) {
                         name='password'
                         placeholder='Password'
                         secureTextEntry={true} 
-                        textContentType='password'
-                    />
-                    <AppFormField
-                        autoCapitalize='none' 
-                        autoCorrect={false}
-                        icon='card-account-details-outline'
-                        name='employID'
-                        placeholder='Employ ID'
-                        secureTextEntry={false} 
                         textContentType='password'
                     />
                     <SubmitButton title='Register'/>
